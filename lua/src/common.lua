@@ -1,5 +1,6 @@
-ffi = require("ffi")
-
+local ffi = require("ffi")
+require("src.modules.bindings.gl.gl")
+require("src.modules.bindings.glfw.glfw")
 -- Metatable for ease of use.
 
 local metatable = {}
@@ -8,27 +9,23 @@ function metatable:__index(index)
     return rawget(self, 2)[rawget(self, 1)..index]
 end
 
--- Define c functions and types here.
-ffi.cdef([[
 
-int glfwInit();
-void glfwTerminate();
+enum = {
 
-typedef void (* GLFWerrorfun)(int error_code, const char* description);
+    GLFW_CONTEXT_VERSION_MAJOR = 0x00022002,
+    
+    GLFW_CONTEXT_VERSION_MINOR = 0x00022003,
+    
+    GLFW_OPENGL_PROFILE = 0x00022008,
+    
+    GLFW_OPENGL_CORE_PROFILE = 0x00032001,
 
-typedef struct GLFWmonitor GLFWmonitor;
-typedef struct GLFWwindow GLFWwindow;
-GLFWerrorfun glfwSetErrorCallback(GLFWerrorfun callback);
-GLFWwindow* glfwCreateWindow(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share);
-void glfwPollEvents();
-int glfwWindowShouldClose(GLFWwindow* window);
+    GLFW_TRANSPARENT_FRAMEBUFFER = 0x0002000A,
+    
+    GL_COLOR_BUFFER_BIT = 0x00004000,
 
-void glfwMakeContextCurrent(GLFWwindow* window);
-void glfwSwapBuffers(GLFWwindow* window);
-]])
-
-
-
+    GL_TRIANGLES = 0x0004,
+}
 
 
 glfw = setmetatable({"glfw", ffi.load("glfw3")}, metatable) -- Require glfw. 

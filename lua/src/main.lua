@@ -14,7 +14,7 @@ local common = require("src.common")
             
             2): Learn how to apply shaders to pipeline.
             
-            3): Make protype of map?
+            3): Make protype of map grid?
             
             4): ...
         
@@ -58,13 +58,13 @@ local main = {
         glfw.WindowHint(enum.GLFW_OPENGL_PROFILE, enum.GLFW_OPENGL_CORE_PROFILE)
         
         while glfw.WindowShouldClose(window) == 0 do
-            
-            gl.ClearColor(0.25, 0, 0.75, 0)
+        
+        
+            gl.ClearColor(1.0, 1.0, 1.0, 0.0)
 
             gl.Clear(enum.GL_COLOR_BUFFER_BIT)
             
             
-        
             gl.Begin(enum.GL_TRIANGLES)
             gl.Color4f(1.0, 0.0, 0.0, 0.0)
             gl.Vertex2f(-0.95, -0.95)
@@ -73,7 +73,9 @@ local main = {
             gl.Color4f(0.0, 0.0, 1.0, 0.0)
             gl.Vertex2f(0.95, -0.95)
         
+        
             gl.End()
+        
         
             glfw.SwapBuffers(window)
             

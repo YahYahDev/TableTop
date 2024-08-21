@@ -1,4 +1,4 @@
-enum = {
+local enum = {
 
     -- GLFW enums below
     GLFW_CONTEXT_VERSION_MAJOR = 0x00022002,

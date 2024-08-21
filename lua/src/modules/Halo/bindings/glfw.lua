@@ -30,7 +30,8 @@ void glfwWindowHint(int hint, int value);
 
 int glfwGetKey(GLFWwindow* window, int key);
 
-
+typedef void (*GLFWglproc)(void); // These are so we can import functions windows doesnt have.
+GLFWglproc glfwGetProcAddress(const char* procname);
 
 ]])
 

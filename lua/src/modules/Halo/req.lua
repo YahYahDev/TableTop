@@ -1,8 +1,14 @@
 ffi = require("ffi")
 
+local log = require("src.modules.Std.Log")
+log.name = "halo"
 enum = require("src.modules.Halo.bindings.enums") -- Get enums from enums.lua
 require("src.modules.Halo.bindings.glfw")
 require("src.modules.Halo.bindings.gl")
+
+
+
+
 -- Metatable for ease of use.
 local metatable = {}
 
@@ -19,6 +25,20 @@ glfw = setmetatable({"glfw", ffi.load("glfw3")}, metatable) -- Requires glfw.
 gl = setmetatable({"gl", ffi.load("opengl32")}, metatable) -- Requires opengl.
 -- Reference lua/libs/gl/gl.h
 
+
+-- Bind non ffiable functions because windows is a cuck.
+ffi.cdef([[
+
+    typedef void (*PFNGLGENBUFFERS)(GLsizei n, GLuint *buffers);
+
+]])
+
+gl.GenBuffers = ffi.cast("PFNGLGENBUFFERS", glfw.GetProcAddress("glGenBuffers"))
+
+if not gl.GenBuffers then
+    log:Error("Failed to load glGenBuffers.")
+    return
+end
 
 glfw.Error = function (ErrorCode, Info)
     error(string.format("GLFW, ERROR: [%i], %s", ErrorCode, ffi.string(Info)))

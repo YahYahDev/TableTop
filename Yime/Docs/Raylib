@@ -1,0 +1,21 @@
+Model
+
+    Model LoadModel(const char* path);
+        load model from a path into memory
+        doesnt work without InitWindow() being called first
+
+    void DrawModel(Vector3 location, float size, color);
+        Draws model at the "location" to the size of "size"
+        doesnt work without BeginMode3D();
+
+TOOLKIT
+
+    glslViewer
+
+    Luajit
+
+    C
+        gcc
+
+        mingw-W64-gcc
+

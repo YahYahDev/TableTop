@@ -1,0 +1,54 @@
+TODO
+
+    DONE LIST:
+
+    (1) Camera
+
+    LEARNING: TODO
+
+    (1) Learn glsl shaders
+        //Enough to implement some sort of lighting
+
+    (2) Learn blender
+        //Enough to make simple models minimum
+
+    (3) Learn animation?
+        //enough to animate charicter models
+
+    IMPLEMENTATION: TODO
+
+    (1) Figure out level generation
+
+        OPT:
+            (1) WFC
+
+                (1) Make a mesh generator
+
+                (2) Make a tile stitcher
+
+            (2) Stitch pre made "Tile Rooms" togeather
+
+                (1) Manualy make each room in blender with exits ect
+
+                (2) Make them programatically?
+
+        REQ:
+            (1) Able to be randomly generated
+
+            (2) Needs to have state transferable from a server to client
+
+            (3) Floor tiles mapped
+
+    (2) Figure out charicter movement ect
+
+        OPT:
+            (1) Camera rotation?
+
+        REQ:
+            (1) Have a out of combat movement mode
+
+            (2) Have a in combat movment mode
+
+            (3) Only allow movement to mapped tiles
+
+
